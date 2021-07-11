@@ -4,6 +4,6 @@ const enquiry_long = require('./enquiry-long');
 
 module.exports = function(app){
     app.use('/api/user', user)
-    app.use('/api/contact_us/', contact_us)
+    app.use('/api/somya/contact_us/', contact_us)
     app.use('/api/somya/lenquiry/', enquiry_long)
 }

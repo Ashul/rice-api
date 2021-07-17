@@ -8,8 +8,8 @@ const EnqueryLongSchema = new Schema({
     email:{type:String},
     mobile:{type:String},
 
-    //area :{type:String},
-    //invest :{type:String},
+    franchise_type :{type:String},
+    sqft_area :{type:String},
     //disctrict:{type:String},
     state :{type:String},
     city :{type:String},
@@ -17,6 +17,9 @@ const EnqueryLongSchema = new Schema({
     postcode:{type:String},
     
     message:{type:String},
+   
+    user_name :{type:String},
+       user_pass :{type:String},
 
     created:{type:Date, default:Date.now}
 })

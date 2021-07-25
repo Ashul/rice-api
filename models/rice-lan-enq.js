@@ -12,11 +12,11 @@ const RiceLandEnq = new Schema({
     cstate :{type:String},
     czip:{type:String},
     cname :{type:String},
-    order_note :{type:String}
+    order_note :{type:String},
 
 
     created:{type:Date, default:Date.now}
 })
 
 
-module.exports = mongoose.model('RiceLnEnquery', riceLndEnq)
+module.exports = mongoose.model('RiceLnEnquery', RiceLandEnq)

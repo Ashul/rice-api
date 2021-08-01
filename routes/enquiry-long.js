@@ -48,5 +48,19 @@ router.get('/somya-enquery-order/:id', (req, res) => {
      })
  })// end single find by
 
+/*--------------------------------------------------------------------------------*/
+ router.post('/somya-enquery-order/login', (req, res) => {
+    queryLong.findOne({user_name:req.body.user_name},function(err,data){
+		if(data){
+			if(data.user_pass==req.body.user_pass){
+				res.send({"Success":"Success!",data: data });
+			}else{
+				res.send({"Success":"Wrong password!"});
+			}
+		}else{
+			res.send({"Success":"This Email Is not regestered!"});
+		}
+	});
+ })// end single find by
 
  module.exports=router;

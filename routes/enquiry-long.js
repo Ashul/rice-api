@@ -25,7 +25,7 @@ router.get('/somya-enquery-order/send_mail', (req, res) => {
                 from: 'niraj91k@gmail.com',
                 to: 'shyamraj2906@gmail.com',
                 subject: 'Sending Email using Node.js',
-                text: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
+                text: "Full Details",
               };
             transporter.sendMail(mailOptions, function(error, info){
 	    	console.log(info);

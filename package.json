@@ -17,7 +17,7 @@
     "mongoose": "^5.9.14",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
-    "nodemailer": "^6.6.3",
+    "nodemailer": "^6.4.16",
     "xoauth2": "^1.2.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "razorpay": "^2.0.6",

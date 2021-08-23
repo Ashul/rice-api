@@ -52,7 +52,7 @@ async function sendMail() {
         from: 'niraj91k@gmail.com',
         to: 'niraj91k@gmail.com',
         subject: 'Hello from gmail using API',
-        text: 'Hello from gmail email using API',
+        text: 'Hello from Live Server ',
         html: '<h1>Hello from gmail email using API</h1>',
       };
   

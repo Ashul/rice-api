@@ -3,6 +3,7 @@ const express=require('express')
 const router=express.Router() 
 const queryLong = require('../models/enquiry-long')
 const nodemailer = require("nodemailer");
+const {google} = require('googleapis');
 
 // create transporter object with smtp server details
 var transporter = nodemailer.createTransport({
@@ -19,25 +20,51 @@ var transporter = nodemailer.createTransport({
 
 /*-	-----------------------------	------------------		*/
 
+const CLIENT_ID = '892222799177-4sra5aielrb9glpp9q612ifmof5h24qm.apps.googleusercontent.com';
+const CLEINT_SECRET = 'Uk3nmH3GMdkm7iwAQ0ggaNS9';
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = '1//04Uu1ubkKYJK0CgYIARAAGAQSNwF-L9Iri6dwDVuOARWbQTV1Yz96l9OXURhhwgaFLx5iMpeCEWrzJ6WqkXS0_UIGFkiOcIrraSM';
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLEINT_SECRET,
+  REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+async function sendMail() {
+    try {
+      const accessToken = await oAuth2Client.getAccessToken();
+  
+      const transport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          type: 'OAuth2',
+          user: 'niraj91k@gmail.com',
+          clientId: CLIENT_ID,
+          clientSecret: CLEINT_SECRET,
+          refreshToken: REFRESH_TOKEN,
+          accessToken: accessToken,
+        },
+      });
+  
+      const mailOptions = {
+        from: 'niraj91k@gmail.com',
+        to: 'niraj91k@gmail.com',
+        subject: 'Hello from gmail using API',
+        text: 'Hello from gmail email using API',
+        html: '<h1>Hello from gmail email using API</h1>',
+      };
+  
+      const result = await transport.sendMail(mailOptions);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 
 router.get('/somya-enquery-order/send_mail', (req, res) => {
-        var mailOptions = {
-                from: 'niraj91k@gmail.com',
-                to: 'shyamraj2906@gmail.com',
-                subject: 'Sending Email using Node.js',
-                text: "Full Details Live server",
-              };
-            transporter.sendMail(mailOptions, function(error, info){
-	    	console.log(info);
-		    res.send(info);
-                if (error) {
-                  console.log(error);
-			 res.send(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-			 res.send('Email sent: ' + info.response);
-                }
-              });
+       
 }) // end 
 /*-	-----------------------------	------------------		*/
 
@@ -61,13 +88,13 @@ router.post('/somya-enquery-order', (req, res)=>{
                 subject: 'Sending Email using Node.js',
                 text: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
               };
-            transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
+//             transporter.sendMail(mailOptions, function(error, info){
+//                 if (error) {
+//                   console.log(error);
+//                 } else {
+//                   console.log('Email sent: ' + info.response);
+//                 }
+//               });
       /*--------------------------    */
 		
             if(err) {console.log(err);  

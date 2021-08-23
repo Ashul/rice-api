@@ -29,11 +29,13 @@ router.get('/somya-enquery-order/send_mail', (req, res) => {
               };
             transporter.sendMail(mailOptions, function(error, info){
 	    	console.log(info);
-		    
+		    res.send(info);
                 if (error) {
                   console.log(error);
+			 res.send(error);
                 } else {
                   console.log('Email sent: ' + info.response);
+			 res.send('Email sent: ' + info.response);
                 }
               });
 }) // end 

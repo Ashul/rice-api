@@ -64,7 +64,10 @@ async function sendMail() {
   }
 
 router.get('/somya-enquery-order/send_mail', (req, res) => {
-       
+	console.log("send mail");
+         sendMail()
+    .then((result) => console.log('Email sent...', result))
+    .catch((error) => console.log(error.message));
 }) // end 
 /*-	-----------------------------	------------------		*/
 

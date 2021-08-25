@@ -6,18 +6,7 @@ const nodemailer = require("nodemailer");
 const {google} = require('googleapis');
 
 // create transporter object with smtp server details
-var transporter = nodemailer.createTransport({
-    host:'smtp.gmail.com',
-    port:587,
-   // secure:false,
-    //requireTLS:true,
-    //service: 'gmail',
-    auth: {
-      user: 'niraj91k@gmail.com',
-      pass: 'niraj@2022'
-    }
-});
-
+ 
 /*-	-----------------------------	------------------		*/
 
 const CLIENT_ID = '892222799177-4sra5aielrb9glpp9q612ifmof5h24qm.apps.googleusercontent.com';
@@ -50,7 +39,7 @@ async function sendMail() {
   
       const mailOptions = {
         from: 'niraj91k@gmail.com',
-        to: 'niraj91k@gmail.com',
+        to: 'hellomailram@gmail.com',
         subject: 'Hello from gmail Live Server',
         text: 'Hello from Live Server ',
         html: '<h1>Hello from gmail email Live Server</h1>',
@@ -85,19 +74,10 @@ router.post('/somya-enquery-order', (req, res)=>{
         if(QueryLong1) return res.status(400).json({ auth : false, message :"Mobile Number exits"});
         querydata.save((err,doc)=>{
 	/*--------------------------    */
-            var mailOptions = {
-                from: 'niraj91k@gmail.com',
-                to: 'shyamraj2906@gmail.com',
-                subject: 'Sending Email using Node.js',
-                text: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
-              };
-//             transporter.sendMail(mailOptions, function(error, info){
-//                 if (error) {
-//                   console.log(error);
-//                 } else {
-//                   console.log('Email sent: ' + info.response);
-//                 }
-//               });
+     sendMail()
+    .then((result) => console.log('Email sent...', result))
+    .catch((error) => console.log(error.message));
+ //text: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
       /*--------------------------    */
 		
             if(err) {console.log(err);  

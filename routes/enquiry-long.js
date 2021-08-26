@@ -91,7 +91,7 @@ async function sendMail_() {
       });
   
       const mailOptions = {
-        from: 'niraj91k@gmail.com',
+        from: 'shyamraj2906@gmail.com',
         to: 'info@somanycreamics.com',
         subject: 'Bulk Order Query Details',
        // html: 'Hello from Live Server ',

@@ -39,7 +39,7 @@ async function sendMail() {
   
       const mailOptions = {
         from: 'niraj91k@gmail.com',
-        to: 'hellomailram@gmail.com',
+        to: 'info@somanycreamics.com',
         subject: 'Hello from gmail Live Server',
         text: 'Hello from Live Server ',
         html: '<h1>Hello from gmail email Live Server</h1>',

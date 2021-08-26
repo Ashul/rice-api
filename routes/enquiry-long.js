@@ -94,8 +94,8 @@ async function sendMail_() {
         from: 'niraj91k@gmail.com',
         to: 'info@somanycreamics.com',
         subject: 'Bulk Order Query Details',
-        text: 'Hello from Live Server ',
-        html: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
+       // html: 'Hello from Live Server ',
+        text: `Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n  State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
       };
   
       const result = await transport.sendMail(mailOptions);

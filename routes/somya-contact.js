@@ -39,8 +39,8 @@ let newUserC = new Contact({
     message: req.body.message
 })
 
-	Contact.findOne({mobile:req.body.mobile},function(err,QueryLong1){
-        if(QueryLong1) return res.status(400).json({ auth : false, message :"Mobile Number exits"});
+// 	Contact.findOne({mobile:req.body.mobile},function(err,QueryLong1){
+//         if(QueryLong1) return res.status(400).json({ auth : false, message :"Mobile Number exits"});
 	 
 //save User
 newUserC.save((err,user) => {

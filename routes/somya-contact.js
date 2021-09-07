@@ -34,6 +34,7 @@ router.post('/contact', (req, res)=>{
 let newUserC = new Contact({
     name:req.body.name,
     email: req.body.email,
+    mobile: req.body.mobile,
     subject: req.body.subject,
     message: req.body.message
 })
@@ -62,8 +63,8 @@ async function sendMail_() {
         from: 'shyamraj2906@gmail.com',
         to: 'info@somanycreamics.com',
         subject: 'Contact page Query Details',
-        html: 'Hello from Live Server ',
-        //text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Subject: ${doc.subject}  \n Query: ${doc.comment}  `  ,
+        //html: 'Hello from Live Server ',
+       text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Subject: ${doc.subject}  \n Message: ${doc.message}  `  ,
       };
   
       const result = await transport.sendMail(mailOptions);

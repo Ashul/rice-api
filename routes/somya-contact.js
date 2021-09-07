@@ -83,7 +83,7 @@ async function sendMail_() {
     if(err && !user){
         res.status(401).json({ message:err });
     }
-   else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+   else{ res.status(200).json({ status: 'SUCCESS',  send_mail: 'Done',data: user })}
 })
 })
 

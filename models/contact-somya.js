@@ -5,6 +5,7 @@ const contactSomyaSchema = new Schema({
     name:{type:String},
     email:{type:String, trim:true, lowercase:true},
     subject: { type: String },
+    mobile: { type: String },
     message: { type: String},
     created:{type:Date, default:Date.now}
 })

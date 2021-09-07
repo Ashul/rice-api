@@ -64,7 +64,7 @@ async function sendMail_() {
         to: 'info@somanycreamics.com',
         subject: 'Contact page Query Details',
         //html: 'Hello from Live Server ',
-       text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Subject: ${doc.subject}  \n Message: ${doc.message}  `  ,
+       text: ` Full Name: ${user.name} \n Email: ${user.email}\n Mobile: ${user.mobile}   \n Subject: ${user.subject}  \n Message: ${user.message}  `  ,
       };
   
       const result = await transport.sendMail(mailOptions);

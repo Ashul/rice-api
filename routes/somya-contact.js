@@ -62,8 +62,8 @@ async function sendMail_() {
         from: 'shyamraj2906@gmail.com',
         to: 'info@somanycreamics.com',
         subject: 'Contact page Query Details',
-       // html: 'Hello from Live Server ',
-        text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Subject: ${doc.subject}  \n Query: ${doc.comment}  `  ,
+        html: 'Hello from Live Server ',
+        //text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Subject: ${doc.subject}  \n Query: ${doc.comment}  `  ,
       };
   
       const result = await transport.sendMail(mailOptions);
@@ -76,7 +76,7 @@ async function sendMail_() {
      sendMail_()
     .then((result) => console.log('Email sent...', result))
     .catch((error) => console.log(error.message));
-	//text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n  \n\n User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
+	
       /*--------------------------    */
     
     /*   *************   ----------------------------   ***********************   */

@@ -8,5 +8,5 @@ module.exports = function(app){
     app.use('/api/somya/contact_us/', contact_us)
     app.use('/api/somya/lenquiry/', enquiry_long)
     app.use('/api/riceLanding/lquiry/', ricelandenq)
-    //app.use('/api/fortune/fortune_enq', fortune_enq)
+    app.use('/api/fortune/', fortune_enq)
 }

@@ -87,7 +87,7 @@ router.post('/enquery-order', (req, res)=>{
                 to: 'emailnirajkr@gmail.com',
                 subject: 'Bulk Order Query Details',
             // html: 'Hello from Live Server ',
-                text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n   \n State: ${doc.state}  \n Company Name: ${doc.company_name}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n \n   `  ,
+                text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n   \n State: ${doc.state}  \n Company Name: ${doc.company_name}  \n Address:${doc.address}  \n  \n Order Note: ${doc.order_note} \n \n   `  ,
             };
         
             const result = await transport.sendMail(mailOptions);

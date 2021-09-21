@@ -25,4 +25,4 @@ const EnqueryLongSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('LongEnquery', EnqueryLongSchema)
+module.exports = mongoose.model('FortuneEnquery', EnqueryLongSchema)

@@ -12,7 +12,7 @@ const CLIENT_ID = '892222799177-4sra5aielrb9glpp9q612ifmof5h24qm.apps.googleuser
 const CLEINT_SECRET = 'Uk3nmH3GMdkm7iwAQ0ggaNS9';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = '1//04lgTvVER1d5KCgYIARAAGAQSNwF-L9Irxz0f3KuOyIfOAu352bZIf6scMATrvfpF2VDjrtQUY3hhgN-ZAtiig0Ub_z-m_aXbvdI';
-
+    //authorization code//4/0AX4XfWjR8lDj11zXUnt7P25v7E9u92CnTKgVWYe85fN2f42K9GhTFGNrjf-zMetFsQ-XEA
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLEINT_SECRET,
@@ -61,48 +61,41 @@ router.get('/send_mail', (req, res) => {
 
 
 router.post('/enquery-order', (req, res)=>{
-//     let orderbill = new queryLong(req.body)    //save User
-//     orderbill.save((err,user) => {        // user.hash = undefined;
-//         if(err && !user){
-//             res.status(401).json({ message:err });
-//         }
-//     else{ res.status(200).json({ status: 'SUCCESS', data: user })}
-//     })
      let querydata = new queryLong(req.body) 
         queryLong.findOne({mobile:querydata.mobile},function(err,QueryLong1){
         if(QueryLong1) return res.status(400).json({ auth : false, message :"Mobile Number exits"});
         querydata.save((err,doc)=>{
 	/*	--------------------------  ---------------------------------------------------------------------------------------  	*/
-async function sendMail_() {
-    try {
-      const accessToken = await oAuth2Client.getAccessToken();
-  
-      const transport = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          type: 'OAuth2',
-          user: 'niraj91k@gmail.com',
-          clientId: CLIENT_ID,
-          clientSecret: CLEINT_SECRET,
-          refreshToken: REFRESH_TOKEN,
-          accessToken: accessToken,
-        },
-      });
-  
-      const mailOptions = {
-        from: 'shyamraj2906@gmail.com',
-        to: 'info@somanycreamics.com',
-        subject: 'Bulk Order Query Details',
-       // html: 'Hello from Live Server ',
-        text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n Franchise Type: ${doc.franchise_type}  \n State: ${doc.state}  \n SQFT Area: ${doc.sqft_area}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n \n  User ID: ${doc.user_name} \n Password: ${doc.user_pass} `  ,
-      };
-  
-      const result = await transport.sendMail(mailOptions);
-      return result;
-    } catch (error) {
-      return error;
-    }
-  }	
+        async function sendMail_() {
+            try {
+            const accessToken = await oAuth2Client.getAccessToken();
+        
+            const transport = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                type: 'OAuth2',
+                user: 'niraj91k@gmail.com',
+                clientId: CLIENT_ID,
+                clientSecret: CLEINT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: accessToken,
+                },
+            });
+        
+            const mailOptions = {
+                from: 'shyamraj2906@gmail.com',
+                to: 'emailnirajkr@gmail.com',
+                subject: 'Bulk Order Query Details',
+            // html: 'Hello from Live Server ',
+                text: ` Full Name: ${doc.name} \n Email: ${doc.email}\n Mobile: ${doc.mobile}   \n Invest Amount: ${doc.f_name} \n Postal/Zip Code: ${doc.postcode} \n Town/City: ${doc.city} \n   \n State: ${doc.state}  \n Company Name: ${doc.company_name}  \n Address:${doc.address}  \n  \n Order Note: ${doc.message} \n \n   `  ,
+            };
+        
+            const result = await transport.sendMail(mailOptions);
+            return result;
+            } catch (error) {
+            return error;
+            }
+        }	
 	/*	--------------------------  ---------------------------------------------------------------------------------------  	*/	
      sendMail_()
     .then((result) => console.log('Email sent...', result))
@@ -114,8 +107,7 @@ async function sendMail_() {
                 return res.status(400).json({ success : false});}
             res.status(200).json({
                 succes:true,
-                user : doc,
-	    	login_id:"check"
+                user : doc
             });
         });
     });

@@ -138,5 +138,52 @@ router.get('/enquery-order/:id', (req, res) => {
 
 /*--------------------------------------------------------------------------------*/
  
+//  -------------------------   //
+
+router.post('/add-bill', (req, res)=>{
+    //check if user exits later
+ console.log(req.body)
+  
+let newbill = new queryLong(req.body)
+//save User
+newbill.save((err,user) => {
+    // user.hash = undefined;
+    if(err && !user){
+        res.status(401).json({ message:err });
+    }
+   else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+})
+}) // end
+
+router.get('/add-bill/all', (req, res) => {
+    queryLong.find({}, (err, user)=>{
+        if(err && !user){
+            res.status(401).json({ message:err });
+        }
+       else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+    })
+}) // end 
+//API to get user by ID
+router.get('/add-bill/:id', (req, res) => {
+    // console.log(req.body)
+    queryLong.findOne({
+        mobile: req.params.id
+     }, (err, user)=>{
+         if(err && !user){
+             res.status(401).json({ message:err });
+         }
+        else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+     })
+ })// end single find by
+
+ router.put('/add-bill/:id', (req,res)=>{
+    let updateUser = req.body;
+    queryLong.findByIdAndUpdate(req.params.id, updateUser, {new:true},(err, user)=>{
+        if(err){console.log(err)}
+        else{
+            res.send(user)
+        }
+    })
+})
 
  module.exports=router;

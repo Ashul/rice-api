@@ -1,6 +1,7 @@
 const express=require('express') 
 const router=express.Router() 
 const queryLong = require('../models/forune_enquiry')
+const TrackOrder = require('../models/track-order-fortune')
 const nodemailer = require("nodemailer");
 const {google} = require('googleapis');
 
@@ -185,5 +186,68 @@ router.get('/add-bill/:id', (req, res) => {
         }
     })
 })
+
+/*------------------    ******************  --------------------------------    */
+router.post('/track-order', (req, res)=>{
+  
+let newtrackC = new TrackOrder({
+    mobile:req.body.mobile,
+
+    ordered_date: req.body.ordered_date,
+    ordered_text: req.body.ordered_text,
+    ordered_status: req.body.ordered_status,
+
+    packed_date: req.body.packed_date,
+    paccked_text: req.body.paccked_text,
+    packed_status: req.body.packed_status,
+
+    shipped_date: req.body.shipped_date,
+    shipped_text: req.body.shipped_text,
+    shipped_status: req.body.shipped_status,
+
+    cancelled_date: req.body.cancelled_date,
+    cancelled_text: req.body.cancelled_text,
+    cancelled_status: req.body.cancelled_status,
+
+    user_name: req.body.user_name,
+    track_id: req.body.track_id,
+    user_adress: req.body.user_adress,
+    currier_name: req.body.currier_name,
+    dilvery_date: req.body.dilvery_date,
+    
+    prod_status: req.body.prod_status,
+  
+})
+//save User
+newtrackC.save((err,user) => {
+    // user.hash = undefined;
+    if(err && !user){
+        res.status(401).json({ message:err });
+    }
+   else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+})
+}) // end
+
+router.get('/track-order/all_', (req, res) => {
+    TrackOrder.find({}, (err, user)=>{
+        if(err && !user){
+            res.status(401).json({ message:err });
+        }
+       else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+    })
+}) // end 
+//API to get all users
+//API to get user by ID
+router.get('/track-order/:id', (req, res) => {
+   // console.log(req.body)
+   TrackOrder.findOne({
+        track_id: req.params.id
+    }, (err, user)=>{
+        if(err && !user){
+            res.status(401).json({ message:err });
+        }
+       else{ res.status(200).json({ status: 'SUCCESS', data: user })}
+    })
+})// end single find by
 
  module.exports=router;

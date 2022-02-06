@@ -12,7 +12,7 @@ const krblOrder = require('../models/krbl-order');
 const CementEnquery = require('../models/cement-enquiry')
 const ifcoEnuiry = require('../models/ifco-enquiry')
 const ifcoOrder = require('../models/ifco-order')
-var Razorpay=require("razorpay");
+//var Razorpay=require("razorpay");
 const IffcoOrder = require('../models/iffco-franchise') // ifco franchiese
 const multer  = require('multer');
 var smtpTransport = require('nodemailer-smtp-transport');
@@ -30,20 +30,20 @@ const conn = mongoose.createConnection(uristring, {
     useUnifiedTopology: true
 }); // end image setup
 
-let instance = new Razorpay({
-    key_id: 'rzp_live_o6QEMsTX3thyrk', // your `KEY_ID`
-    key_secret: 'AGCquhC7NkpyN11IzvOry5bR' // your `KEY_SECRET`
-})
+// let instance = new Razorpay({
+//     key_id: 'rzp_live_o6QEMsTX3thyrk', // your `KEY_ID`
+//     key_secret: 'AGCquhC7NkpyN11IzvOry5bR' // your `KEY_SECRET`
+// })
 
-router.post("/api/payment/order",(req,res)=>{
-    console.log(req.body)
-    params=req.body;
-    instance.orders.create(params).then((data) => {
-           res.send({"sub":data,"status":"success"});
-    }).catch((error) => {
-           res.send({"sub":error,"status":"failed"});
-    })
-});
+// router.post("/api/payment/order",(req,res)=>{
+//     console.log(req.body)
+//     params=req.body;
+//     instance.orders.create(params).then((data) => {
+//            res.send({"sub":data,"status":"success"});
+//     }).catch((error) => {
+//            res.send({"sub":error,"status":"failed"});
+//     })
+// });
 
 //API to Signup User
 router.post('/apply', (req, res)=>{

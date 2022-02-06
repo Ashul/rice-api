@@ -12,5 +12,5 @@ module.exports = function(app){
     app.use('/api/riceLanding/lquiry/', ricelandenq)
     app.use('/api/fortune/', fortune_enq)
     app.use('/api/dawat/', dawat_enq)
-    app.use('/api/ashirwad/', ashirwad_enq)
+    //app.use('/api/ashirwad/', ashirwad_enq)
 }

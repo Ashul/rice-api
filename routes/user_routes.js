@@ -15,7 +15,7 @@ const ifcoOrder = require('../models/ifco-order')
 //var Razorpay=require("razorpay");
 const IffcoOrder = require('../models/iffco-franchise') // ifco franchiese
 const multer  = require('multer');
-var smtpTransport = require('nodemailer-smtp-transport');
+//var smtpTransport = require('nodemailer-smtp-transport');
 const xoauth2 = require('xoauth2');
 const path = require('path');
 

@@ -4,7 +4,7 @@ const enquiry_long = require('./enquiry-long');
 const ricelandenq = require('./rice-lan-enq');
 const fortune_enq = require('./fortune_enq');
 const dawat_enq = require('./dawat_enq');
-const ashirwad_enq = require('./ashirwad_enq');
+//const ashirwad_enq = require('./ashirwad_enq');
 module.exports = function(app){
     app.use('/api/user', user)
     app.use('/api/somya/contact_us/', contact_us)
